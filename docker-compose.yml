@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./django_project:/app/django_project
+      - ./media:/app/media
+      - ./products:/app/products
+      - ./static:/app/static
+      - ./templates:/app/templates
+      - ./tts_audio:/app/tts_audio
+    command: python /app/django_project/manage.py runserver 0.0.0.0:8000
+
+volumes:
+  static_data:
